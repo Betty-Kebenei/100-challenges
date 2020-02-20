@@ -60,6 +60,25 @@ class LinkedList:
     #     ref_to_delete.data = current.data
     #     ref_to_delete.next = current.next
 
+    def rotateList(self, k):
+        # code here
+        current = self.head
+        count = 0
+        prev = None
+        next = None
+        while(current):
+            prev = current
+            if(count == k - 1):
+                next = current.next
+                current.next = None
+                current = next
+            count += 1
+            current = current.next
+        print(prev.data)
+        prev.next = self.head
+        self.head = next
+        return self.head
+
 
 
 
@@ -88,10 +107,11 @@ list1.addNodeAtMiddle(1, 7)
 # print("=============")
 list1.addNodeAtEnd(6)
 list1.printlist()
-# print("=============")
+print("=============")
 # list1.findMidNode()
 # print("=============")
 # list1.deleteNode(3)
 # list1.printlist()
 # print("=============")
+list1.rotateList(3)
 
